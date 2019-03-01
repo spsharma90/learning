@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Log In
+        form(method='POST' action='/submit')
+          div.form-group
+            label(for='email') Email
+            input.form-control(type='text' id='email' placeholder='email' name='email')
+          div.form-group
+            label(for='password') Password
+            input.form-control(type='password' id='password' placeholder='password' name='password')
+          button.btn.btn-primary(type='submit') Log in 
+   
+  
+  script.
+         $(document).ready(function()
+         {
+            var name1 = "email" + "=";
+            var name2 = "password" + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) 
+            {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') 
+            {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name1) == 0) 
+            {
+            $("#email").val(c.substring(name.length, c.length));
+            }
+            if (c.indexOf(name2) == 0) 
+            {
+            $("#password").val(c.substring(name.length, c.length));
+            }
+            }
+        }); 

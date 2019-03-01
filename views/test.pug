@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  input(type="button",id="t1",value="click")
+  div#id1
+  script.
+         $(document).ready(function()
+         {
+           $("#t1").click(function()
+           {
+             $.ajax(
+               {
+                 url:"/result",
+                 type:"post",
+                 success:function(result)
+                 {
+                   $("#id1").html(result.res1+"    "+result.res2);
+                 }
+               })
+           });
+         }); 
+
+   

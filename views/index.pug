@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  input(type="text",id="t1")
+  input(type="text",id="t2")
+  div#id1
+  script.
+         $(document).ready(function()
+         {
+           $("#t1").change(function()
+           {
+             var value = $("#t1").val();
+             
+             $.ajax(
+               {
+                 url:"/data",
+                 type:"post",
+                 data:{r:value},
+                 success:function(result)
+                 {
+                   $("#id1").html(result);
+                    $("#t2").val(result);
+
+                 }
+               })
+           });
+         }); 
+
+  input(type='button')  
